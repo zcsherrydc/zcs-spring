@@ -14,7 +14,7 @@ public class BeanFactory {
         return beanDefinitionMap.get(name).getBean();
     }
 
-//    注册bean实例
+//     注册bean实例
     public void registerBeanDefinition(String name,BeanDefinition beanDefinition){
         beanDefinitionMap.put(name,beanDefinition);
     }
