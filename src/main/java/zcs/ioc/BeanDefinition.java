@@ -1,4 +1,4 @@
-package ioc;
+package zcs.ioc;
 
 /**
  * @author zcs

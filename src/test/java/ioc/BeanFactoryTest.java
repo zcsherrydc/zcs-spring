@@ -1,5 +1,6 @@
 package ioc;
 
+import zcs.ioc.BeanFactory;
 import org.junit.Test;
 
 public class BeanFactoryTest {
