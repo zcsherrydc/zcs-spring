@@ -14,5 +14,5 @@ public interface BeanFactory {
     public Object getBean(String name);
 
 //     注册bean实例
-    public void registerBeanDefinition(String name,BeanDefinition beanDefinition);
+    public void registerBeanDefinition(String name,BeanDefinition beanDefinition) throws Exception;
 }
