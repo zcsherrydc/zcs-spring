@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import zcs.AbstractBeanDefinitionReader;
 import zcs.BeanDefinition;
+import zcs.BeanReference;
 import zcs.PropertyValue;
 import zcs.io.ResourceLoader;
 
@@ -53,12 +54,15 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         }
     }
 
+    //        构造BeanDefinition
     protected void processBeanDefinition(Element ele) {
         String name = ele.getAttribute("name");
         String className = ele.getAttribute("class");
         BeanDefinition beanDefinition = new BeanDefinition();
+//        解析属性
         processProperty(ele, beanDefinition);
         beanDefinition.setBeanClassName(className);
+//        注册bean
         getRegistry().put(name, beanDefinition);
     }
 
@@ -70,7 +74,20 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
                 Element propertyEle = (Element) node;
                 String name = propertyEle.getAttribute("name");
                 String value = propertyEle.getAttribute("value");
-                beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, value));
+                //---------------新加入代码----------------------
+//                name对应的是value
+                if (value != null && value.length() > 0) {
+                    beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, value));
+                } else {
+//                    name对应的是ref
+                    String ref = propertyEle.getAttribute("ref");
+                    if (ref == null || ref.length() == 0) {
+                        throw new IllegalArgumentException("Configuration problem: <property> element for property '"
+                                + name + "' must specify a ref or value");
+                    }
+                    BeanReference beanReference = new BeanReference(ref);
+                    beanDefinition.getPropertyValues().addPropertyValue(new PropertyValue(name, beanReference));
+                }
             }
         }
     }

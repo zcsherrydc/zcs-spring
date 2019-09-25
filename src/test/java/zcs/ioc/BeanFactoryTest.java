@@ -16,19 +16,19 @@ import java.util.Map;
 
 public class BeanFactoryTest {
     @Test
-    public void test() throws Exception{
+    public void test() throws Exception {
 //        读取配置
-        XmlBeanDefinitionReader xmlBeanDefinitionReader=new XmlBeanDefinitionReader(new ResourceLoader());
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
         xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
 
 //       初始化BeanFactory并注册
         BeanFactory beanFactory = new AutowireCapable();
         for (Map.Entry<String, BeanDefinition> stringBeanDefinitionEntry : xmlBeanDefinitionReader.getRegistry().entrySet()) {
-            beanFactory.registerBeanDefinition(stringBeanDefinitionEntry.getKey(),stringBeanDefinitionEntry.getValue());
+            beanFactory.registerBeanDefinition(stringBeanDefinitionEntry.getKey(), stringBeanDefinitionEntry.getValue());
         }
 
 //        获取bean
-        HelloWorldService helloWorldService= (HelloWorldService) beanFactory.getBean("helloWorldService");
+        HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean("helloWorldService");
         helloWorldService.helloWorld();
     }
 
