@@ -1,7 +1,7 @@
-package zcs;
+package zcs.beans;
 
 
-import zcs.io.ResourceLoader;
+import zcs.beans.io.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

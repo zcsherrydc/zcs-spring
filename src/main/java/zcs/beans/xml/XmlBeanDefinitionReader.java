@@ -1,14 +1,14 @@
-package zcs.xml;
+package zcs.beans.xml;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import zcs.AbstractBeanDefinitionReader;
-import zcs.BeanDefinition;
+import zcs.beans.AbstractBeanDefinitionReader;
+import zcs.beans.BeanDefinition;
 import zcs.BeanReference;
-import zcs.PropertyValue;
-import zcs.io.ResourceLoader;
+import zcs.beans.PropertyValue;
+import zcs.beans.io.ResourceLoader;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

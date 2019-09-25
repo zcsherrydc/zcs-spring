@@ -1,4 +1,4 @@
-package zcs;
+package zcs.beans;
 
 public interface BeanDefinitionReader {
 

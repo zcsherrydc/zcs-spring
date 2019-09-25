@@ -1,4 +1,4 @@
-package zcs.io;
+package zcs.beans.io;
 
 import java.io.IOException;
 import java.io.InputStream;

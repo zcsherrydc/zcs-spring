@@ -1,12 +1,12 @@
-package zcs.factory;
+package zcs.beans.factory;
 
-import zcs.BeanDefinition;
+import zcs.beans.BeanDefinition;
 import zcs.BeanReference;
-import zcs.PropertyValue;
+import zcs.beans.PropertyValue;
 
 import java.lang.reflect.Field;
 
-public class AutowireCapable extends AbstractBeanFactory {
+public class AutowireCapableBeanFactory extends AbstractBeanFactory {
     @Override
     protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
         Object bean = beanDefinition.getBeanClass().newInstance();

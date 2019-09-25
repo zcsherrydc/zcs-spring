@@ -1,4 +1,4 @@
-package zcs;
+package zcs.beans;
 
 /**
  * 用于bean属性注入

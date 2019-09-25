@@ -1,6 +1,6 @@
-package zcs.factory;
+package zcs.beans.factory;
 
-import zcs.BeanDefinition;
+import zcs.beans.BeanDefinition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
         return bean;
     }
 
-    @Override
+
     public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception {
         beanDefinitionMap.put(name, beanDefinition);
         beanDefinitionNames.add(name);

@@ -1,4 +1,4 @@
-package zcs;
+package zcs.beans;
 
 import java.util.ArrayList;
 import java.util.List;
