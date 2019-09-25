@@ -7,27 +7,25 @@ import zcs.PropertyValues;
 import zcs.factory.AutowireCapable;
 import zcs.factory.BeanFactory;
 import org.junit.Test;
+import zcs.io.ResourceLoader;
+import zcs.xml.XmlBeanDefinitionReader;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BeanFactoryTest {
     @Test
     public void test() throws Exception{
-//       1. 初始化
+//        读取配置
+        XmlBeanDefinitionReader xmlBeanDefinitionReader=new XmlBeanDefinitionReader(new ResourceLoader());
+        xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
+
+//       初始化BeanFactory并注册
         BeanFactory beanFactory = new AutowireCapable();
-
-//       2. BeanDefinition定义
-        BeanDefinition beanDefinition = new BeanDefinition();
-        beanDefinition.setBeanClassName("zcs.ioc.HelloWorldService");
-
-//        3. 设置属性
-        PropertyValues propertyValues=new PropertyValues();
-        propertyValues.addPropertyValue(new PropertyValue("text","hello world"));
-        beanDefinition.setPropertyValues(propertyValues);
-
-//        4. 生成bean
-        beanFactory.registerBeanDefinition("helloWorldService",beanDefinition);
+        for (Map.Entry<String, BeanDefinition> stringBeanDefinitionEntry : xmlBeanDefinitionReader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(stringBeanDefinitionEntry.getKey(),stringBeanDefinitionEntry.getValue());
+        }
 
 //        获取bean
         HelloWorldService helloWorldService= (HelloWorldService) beanFactory.getBean("helloWorldService");

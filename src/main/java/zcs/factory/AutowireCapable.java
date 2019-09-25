@@ -13,6 +13,12 @@ public class AutowireCapable extends AbstractBeanFactory {
         return bean;
     }
 
+    /**
+     * 封装属性
+     * @param bean
+     * @param mbd
+     * @throws Exception
+     */
     protected void applyPropertyValues(Object bean, BeanDefinition mbd) throws Exception {
         for (PropertyValue propertyValue : mbd.getPropertyValues().getPropertyValues()) {
             Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());
